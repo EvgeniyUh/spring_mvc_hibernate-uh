@@ -9,11 +9,13 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
 public class PersistenceJPAConfig {
 
     @Bean
@@ -34,7 +36,7 @@ public class PersistenceJPAConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/spring_hiber?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC");//verifyServerCertificate=false&useSSL=false&requireSSL=false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC"); //spring_hiber
+        dataSource.setUrl("jdbc:mysql://localhost:3306/spring_hiber?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC");
         dataSource.setUsername("root");
         dataSource.setPassword("volga1364!");
         return dataSource;
